@@ -1,0 +1,13 @@
+.about_container {
+  display: flex;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+
+  .about__header {
+    font-size: 20px;
+  }
+
+  .about__cotent {
+    padding: 10px;
+  }
+}
