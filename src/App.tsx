@@ -3,6 +3,9 @@ import { Switch, Route, Link } from "react-router-dom";
 import "./App.scss";
 
 const About = React.lazy(() => import("./container/about/about"));
+const AddGrocessary = React.lazy(() =>
+  import("./container/add-grocessary/add-grocessary")
+);
 const Dashboard = React.lazy(() => import("./container/dashboard/dashboard"));
 
 function App() {
@@ -11,19 +14,24 @@ function App() {
       <header className="App__header">Grocessary Store</header>
       <main className="App__main">
         <aside className="App__main__aside">
+          <Link to="/" className="link">
+            {" "}
+            Dashboard
+          </Link>
+          <Link to="/addGrocessary" className="link">
+            {" "}
+            Add Grocessary
+          </Link>
           <Link to="/about" className="link">
             {" "}
             About{" "}
-          </Link>
-          <Link to="/" className="link">
-            {" "}
-            Home
           </Link>
         </aside>
         <article className="App__main__article">
           <Suspense fallback={<div className="loader">App Loader</div>}>
             <Switch>
               <Route path="/about" component={About} />
+              <Route path="/addGrocessary" component={AddGrocessary} />
               <Route path="/" component={Dashboard} />
             </Switch>
           </Suspense>

@@ -4,6 +4,15 @@ import { IItem, ItemType } from "../../model/item.interface";
 import { addItemAction } from "../../store/action/app.action";
 import "./add-item.scss";
 
+const ITEM_TYPES = [
+  ItemType.BEVERAGES,
+  ItemType.BREAD_BAKERY,
+  ItemType.DIARY,
+  ItemType.FRUITS,
+  ItemType.PERSONAL_CARE,
+  ItemType.VEGETABLE
+];
+
 export function AddItem(props) {
   const item: IItem = { name: "", quantity: 1, itemType: ItemType.FRUITS };
 
@@ -14,6 +23,14 @@ export function AddItem(props) {
   return (
     <div>
       <form className="form">
+        <div className="form__item_type">
+          <label> Choose Item Type :- </label>
+          <select>
+            {ITEM_TYPES.map(itemType => {
+              return <option value={`${itemType}`}>itemType</option>;
+            })}
+          </select>
+        </div>
         <div className="form__item_name">
           <label> Item Name :- </label>
           <input
