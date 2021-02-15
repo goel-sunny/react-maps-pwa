@@ -1,0 +1,30 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  width: inherit;
+
+  &__header {
+    padding: 20px;
+    font-size: 31px;
+    font-style: italic;
+    font-family: cursive;
+    border-bottom: 1px solid;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    &__aside {
+      padding: 30px;
+      border-right: 1px solid black;
+
+      .link {
+        display: block;
+        padding: 20px 0;
+      }
+    }
+  }
+}

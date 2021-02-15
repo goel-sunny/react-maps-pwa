@@ -10,9 +10,7 @@ export default class About extends React.Component {
   render() {
     return (
       <section className="about_container">
-        <div className="about__header">
-          <Link to="/"> Back </Link> About React PWA
-        </div>
+        <div className="about__header">About Grocessaries</div>
         <div className="about__content">
           This is the Progressive Web App Generally for Mobile Platforms{" "}
         </div>
