@@ -9,7 +9,7 @@
     font-size: 31px;
     font-style: italic;
     font-family: cursive;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid rgb(158, 154, 154);
   }
 
   &__main {
@@ -19,12 +19,16 @@
 
     &__aside {
       padding: 30px;
-      border-right: 1px solid black;
+      border-right: 1px solid rgb(158, 154, 154);
 
       .link {
         display: block;
         padding: 20px 0;
       }
+    }
+
+    &__article {
+      padding: 20px;
     }
   }
 }

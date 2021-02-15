@@ -20,7 +20,7 @@ function App() {
             Home
           </Link>
         </aside>
-        <article>
+        <article className="App__main__article">
           <Suspense fallback={<div className="loader">App Loader</div>}>
             <Switch>
               <Route path="/about" component={About} />
