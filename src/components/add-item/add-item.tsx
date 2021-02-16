@@ -13,6 +13,12 @@ const ITEM_TYPES = [
 
 export default function AddItem(props: any) {
   const [item, setItem] = useState({ ...props.item });
+
+  const itemTypeHandle = function(event: any) {
+    setItem({ ...item, itemType: event.target.value });
+    event.preventDefault();
+  };
+
   const itemNameHandle = function(event: any) {
     setItem({ ...item, name: event.target.value });
   };
@@ -31,7 +37,7 @@ export default function AddItem(props: any) {
       <form className="form">
         <div className="form__item_type">
           <label> Choose Item Type : </label>
-          <select>
+          <select onSelect={itemTypeHandle}>
             {ITEM_TYPES.map((itemType, index) => {
               return (
                 <option value={`${itemType}`} key={index}>
@@ -53,8 +59,10 @@ export default function AddItem(props: any) {
         </div>
 
         <div className="form__submit">
-          <button onClick={addItemHandle}>Add Item </button>
-          <button>Cancel </button>
+          <button type="button" onClick={addItemHandle}>
+            Add Item{" "}
+          </button>
+          <button type="button">Cancel </button>
         </div>
       </form>
     </div>

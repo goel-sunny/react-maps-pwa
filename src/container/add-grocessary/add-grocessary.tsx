@@ -20,7 +20,7 @@ class AddGrocessary extends React.Component<any, any> {
       <section className="add-grocessary_container">
         <div className="add-grocessary__header">Add Grocessaries </div>
         <div className="add-grocessary__content">
-          <AddItem item={this.state.item} addItems={this.addItems} />
+          <AddItem item={this.state.item} addItems={this.addItems.bind(this)} />
         </div>
       </section>
     );
