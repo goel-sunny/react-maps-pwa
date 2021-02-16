@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { IItem, ItemType } from "../../model/item.interface";
-import { addItemAction } from "../../store/action/app.action";
 import "./add-item.scss";
 
 const ITEM_TYPES = [
@@ -13,12 +11,14 @@ const ITEM_TYPES = [
   ItemType.VEGETABLE
 ];
 
-function AddItem(props: any) {
-  const addItem = (item: any) => {
-    props.addItemAction({ ...item });
+export default function AddItem(props: any) {
+  const [item, setItem] = useState({ ...props.item });
+
+  const itemTypeHandle = function(event: any) {
+    setItem({ ...item, itemType: event.target.value });
+    event.preventDefault();
   };
 
-  const [item, setItem] = useState({ ...props.item });
   const itemNameHandle = function(event: any) {
     setItem({ ...item, name: event.target.value });
   };
@@ -29,7 +29,6 @@ function AddItem(props: any) {
 
   const addItemHandle = (event: any) => {
     props.addItems(item);
-    addItem(item);
     event.preventDefault();
   };
 
@@ -38,7 +37,7 @@ function AddItem(props: any) {
       <form className="form">
         <div className="form__item_type">
           <label> Choose Item Type : </label>
-          <select>
+          <select onChange={itemTypeHandle}>
             {ITEM_TYPES.map((itemType, index) => {
               return (
                 <option value={`${itemType}`} key={index}>
@@ -60,12 +59,12 @@ function AddItem(props: any) {
         </div>
 
         <div className="form__submit">
-          <button onClick={addItemHandle}>Add Item </button>
-          <button>Cancel </button>
+          <button type="button" onClick={addItemHandle}>
+            Add Item{" "}
+          </button>
+          <button type="button">Cancel </button>
         </div>
       </form>
     </div>
   );
 }
-
-export default connect(null, { addItemAction })(AddItem);

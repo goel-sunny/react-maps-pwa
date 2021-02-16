@@ -20,6 +20,7 @@
     &__aside {
       padding: 30px;
       border-right: 1px solid rgb(158, 154, 154);
+      flex: 1;
 
       .link {
         display: block;
@@ -29,6 +30,7 @@
 
     &__article {
       padding: 20px;
+      flex: 9;
     }
   }
 }
