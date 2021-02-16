@@ -1,14 +1,23 @@
-.home_container {
-    display: flex;
-    font-size: 16px;
-    font-family: "Courier New", Courier, monospace;
-  
-    .home__header {
-      font-size: 20px;
+.dashboard_container {
+  .dashboard__header {
+    font-size: 20px;
+  }
+
+  .dashboard__content {
+    padding: 10px;
+
+    table,
+    th,
+    td {
+      border: 1px solid rgb(175, 170, 170);
     }
-  
-    .home__cotent {
+
+    table {
+      width: 100%;
+    }
+
+    &__no-item {
       padding: 10px;
     }
   }
-  
+}

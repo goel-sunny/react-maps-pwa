@@ -37,7 +37,7 @@ export default function AddItem(props: any) {
       <form className="form">
         <div className="form__item_type">
           <label> Choose Item Type : </label>
-          <select onSelect={itemTypeHandle}>
+          <select onChange={itemTypeHandle}>
             {ITEM_TYPES.map((itemType, index) => {
               return (
                 <option value={`${itemType}`} key={index}>
