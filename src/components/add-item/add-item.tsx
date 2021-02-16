@@ -13,9 +13,9 @@ const ITEM_TYPES = [
   ItemType.VEGETABLE
 ];
 
- function AddItem(props: any) {
-  const addItem = (event: any) => {
-    addItemAction(props.item);
+function AddItem(props: any) {
+  const addItem = (item: any) => {
+    addItemAction({...item});
   };
 
   const [item, setItem] = useState({ ...props.item });
@@ -29,7 +29,7 @@ const ITEM_TYPES = [
 
   const addItemHandle = (event: any) => {
     props.addItems(item);
-    addItem(event);
+    addItem(item);
     event.preventDefault();
   };
 
@@ -55,7 +55,7 @@ const ITEM_TYPES = [
         </div>
 
         <div className="form__item_quantity">
-          <label> Item Name : </label>
+          <label> Quantity : </label>
           <input onChange={itemQuantityHandle} value={item.quantity} />
         </div>
 
@@ -68,4 +68,4 @@ const ITEM_TYPES = [
   );
 }
 
-export default connect(null, { addItemAction })(AddItem);
+export default connect(null, addItemAction)(AddItem);
