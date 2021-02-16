@@ -15,7 +15,7 @@ const ITEM_TYPES = [
 
 function AddItem(props: any) {
   const addItem = (item: any) => {
-    addItemAction({...item});
+    props.addItemAction({ ...item });
   };
 
   const [item, setItem] = useState({ ...props.item });
@@ -68,4 +68,4 @@ function AddItem(props: any) {
   );
 }
 
-export default connect(null, addItemAction)(AddItem);
+export default connect(null, { addItemAction })(AddItem);
