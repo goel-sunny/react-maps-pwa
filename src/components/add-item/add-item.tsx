@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { IItem, ItemType } from "../../model/item.interface";
-import { addItemAction } from "../../store/action/app.action";
 import "./add-item.scss";
 
 const ITEM_TYPES = [
@@ -13,11 +11,7 @@ const ITEM_TYPES = [
   ItemType.VEGETABLE
 ];
 
-function AddItem(props: any) {
-  const addItem = (item: any) => {
-    props.addItemAction({ ...item });
-  };
-
+export default function AddItem(props: any) {
   const [item, setItem] = useState({ ...props.item });
   const itemNameHandle = function(event: any) {
     setItem({ ...item, name: event.target.value });
@@ -29,7 +23,6 @@ function AddItem(props: any) {
 
   const addItemHandle = (event: any) => {
     props.addItems(item);
-    addItem(item);
     event.preventDefault();
   };
 
@@ -67,5 +60,3 @@ function AddItem(props: any) {
     </div>
   );
 }
-
-export default connect(null, { addItemAction })(AddItem);
