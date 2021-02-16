@@ -7,8 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { commonReducer } from "./store/reducer/app.reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(commonReducer);
+const composedEnhancer = composeWithDevTools();
+const store = createStore(commonReducer, composedEnhancer);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -16,6 +16,7 @@ export const initialState: IState = {
 };
 
 export function appReducer(state = initialState, actions: IAction) {
+  console.log("dispatcher   ", actions.payload);
   switch (actions.type) {
     case ADD_ITEM:
       return { items: [...state.items, actions.payload] };

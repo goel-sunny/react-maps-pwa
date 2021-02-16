@@ -1,3 +1,24 @@
 .form {
   padding: 20px;
+
+  &__item_type,
+  &__item_name,
+  &__item_quantity,
+  &__submit {
+    padding: 10px 0;
+    display: flex;
+    width: 400px;
+
+    label,
+    input,
+    select,
+    button {
+      flex: 1;
+    }
+
+    button {
+      padding: 5px;
+      margin: 5px;
+    }
+  }
 }

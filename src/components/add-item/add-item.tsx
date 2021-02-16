@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { IItem, ItemType } from "../../model/item.interface";
 import { addItemAction } from "../../store/action/app.action";
@@ -13,40 +13,54 @@ const ITEM_TYPES = [
   ItemType.VEGETABLE
 ];
 
-export function AddItem(props) {
-  const item: IItem = { name: "", quantity: 1, itemType: ItemType.FRUITS };
+ function AddItem(props: any) {
+  const addItem = (event: any) => {
+    addItemAction(props.item);
+  };
 
-  const addItem = event => {
-    addItemAction(item);
+  const [item, setItem] = useState({ ...props.item });
+  const itemNameHandle = function(event: any) {
+    setItem({ ...item, name: event.target.value });
+  };
+
+  const itemQuantityHandle = (event: any) => {
+    setItem({ ...item, quantity: event.target.value });
+  };
+
+  const addItemHandle = (event: any) => {
+    props.addItems(item);
+    addItem(event);
+    event.preventDefault();
   };
 
   return (
     <div>
       <form className="form">
         <div className="form__item_type">
-          <label> Choose Item Type :- </label>
+          <label> Choose Item Type : </label>
           <select>
-            {ITEM_TYPES.map(itemType => {
-              return <option value={`${itemType}`}>itemType</option>;
+            {ITEM_TYPES.map((itemType, index) => {
+              return (
+                <option value={`${itemType}`} key={index}>
+                  {itemType}
+                </option>
+              );
             })}
           </select>
         </div>
+
         <div className="form__item_name">
-          <label> Item Name :- </label>
-          <input
-            onChange={this.inputFirstNameHandle.bind(this)}
-            value={item.name}
-          />
+          <label> Item Name : </label>
+          <input onChange={itemNameHandle} value={item.name} />
         </div>
-        <div className="form__lastName">
-          <label> Last Name :- </label>
-          <input
-            onChange={this.inputLastNameHandle.bind(this)}
-            value={this.state.lastName}
-          />
+
+        <div className="form__item_quantity">
+          <label> Item Name : </label>
+          <input onChange={itemQuantityHandle} value={item.quantity} />
         </div>
+
         <div className="form__submit">
-          <button onClick={addItem}>Submit </button>
+          <button onClick={addItemHandle}>Add Item </button>
           <button>Cancel </button>
         </div>
       </form>
@@ -54,4 +68,4 @@ export function AddItem(props) {
   );
 }
 
-connect(null, addItemAction)(AddItem);
+export default connect(null, { addItemAction })(AddItem);
