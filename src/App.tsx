@@ -7,6 +7,9 @@ const AddGrocessary = React.lazy(() =>
   import("./container/add-grocessary/add-grocessary")
 );
 const Dashboard = React.lazy(() => import("./container/dashboard/dashboard"));
+const WeatherInfo = React.lazy(() =>
+  import("./container/weather-forcasting/WeatherForcasting")
+);
 
 function App() {
   return (
@@ -15,16 +18,16 @@ function App() {
       <main className="App__main">
         <aside className="App__main__aside">
           <Link to="/" className="link">
-            {" "}
             Dashboard
           </Link>
           <Link to="/addGrocessary" className="link">
-            {" "}
             Add Grocessary
           </Link>
           <Link to="/about" className="link">
-            {" "}
-            About{" "}
+            About
+          </Link>
+          <Link to="/weatherInfo" className="link">
+            WeatherInfo
           </Link>
         </aside>
         <article className="App__main__article">
@@ -32,6 +35,7 @@ function App() {
             <Switch>
               <Route path="/about" component={About} />
               <Route path="/addGrocessary" component={AddGrocessary} />
+              <Route path="/weatherInfo" component={WeatherInfo} />
               <Route path="/" component={Dashboard} />
             </Switch>
           </Suspense>
